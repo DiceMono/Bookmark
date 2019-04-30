@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col"></div>
+    <div class="col-12 col-xl-8">
+        <a href="{% url 'bookmark:create' %}" class="btn btn-success">Add Bookmark</a><br>
+        {# bookmark 목록 출력하기 #}
+        <div class="panel panel-default">
+          <table class="table">
+              <thead>
+                  <th>id</th>
+                  <th>site name</th>
+                  <th>url</th>
+              </thead>
+              {% for object in object_list %}
+              <tr>
+                  <td>{{object.id}}</td>
+                  <td><a href="{% url 'bookmark:detail' object.id %}">{{object.site_name}}</a></td>
+                  <td>{{object.url}}</td>
+              </tr>
+              {% endfor %}
+          </table>
+        </div>
+    </div>
+    <div class="col"></div>
+</div>
+
+{% endblock %}
